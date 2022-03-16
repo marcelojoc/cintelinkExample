@@ -9,37 +9,46 @@
 </head>
 <body>
     <div class="flex items-center justify-center min-h-screen bg-cover bg-center background--image">
-        <div class="px-8 py-6 mt-4 text-left bg-white  rounded-lg">
+        <div class="px-10 py-6 mt-4 text-left bg-white  rounded-lg">
             <div class="flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-600" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path
-                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                </svg>
+                <img
+                src="./img/cintelink-logo-big.png"
+                class="max-w-sm h-auto w-auto "
+                alt=""
+              />
             </div>
-            <h3 class="text-2xl font-bold text-center">Login to your account</h3>
+            
             <form action="">
                 <div class="mt-4">
-                    <div>
-                        <label class="block" for="email">Email<label>
-                                <input type="text" placeholder="Email"
-                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-                                <span class="text-xs tracking-wide text-red-600">Email field is required </span>
-                    </div>
+                    
+                        
+                        <input type="text" placeholder="Usuario"
+                            class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400
+                            focus:outline-none focus:ring-1 focus:ring-blue-600">
+                        <span class="text-xs tracking-wide text-red-600">Email field is required </span>
+                   
                     <div class="mt-4">
-                        <label class="block">Password<label>
-                                <input type="password" placeholder="Password"
-                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                        
+                            <input type="password" placeholder="Contraseña"
+                            class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400
+                            focus:outline-none focus:ring-1 focus:ring-blue-600">
                     </div>
                     <div class="flex items-baseline justify-center">
-                        <button class="px-6 py-2 mt-4 text-white bg-blue-600  rounded-lg hover:bg-blue-900">Login</button>
+                        
+                        <button class="px-6 py-2 mt-9 text-white bg-blue-400  rounded-full hover:bg-blue-500 inline-flex items-center">
+
+                            <svg class="w-4 h-4 mr-4 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M400 256H152V152.9c0-39.6 31.7-72.5 71.3-72.9 40-.4 72.7 32.1 72.7 72v16c0 13.3 10.7 24 24 24h32c13.3 0 24-10.7 24-24v-16C376 68 307.5-.3 223.5 0 139.5.3 72 69.5 72 153.5V256H48c-26.5 0-48 21.5-48 48v160c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zM264 408c0 22.1-17.9 40-40 40s-40-17.9-40-40v-48c0-22.1 17.9-40 40-40s40 17.9 40 40v48z"/></svg>
+                            <span class="uppercase font-bold" >Login</span>
+                        </button>
                     </div>
                     <div class="flex items-baseline justify-center mt-4">
-                        <a href="#" class="text-sm text-blue-600 hover:underline">Forgot password?</a>
+                        <a href="#" class="text-sm text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
                     </div>
+
+                    <div class="flex items-baseline justify-center mt-2">
+                        <a href="#" class="text-sm text-black hover:underline">Crear cuenta</a>
+                    </div>
+
                 </div>
             </form>
         </div>
