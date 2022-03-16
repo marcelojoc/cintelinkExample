@@ -1,0 +1,82 @@
+<template>
+  <div
+    class="flex items-center justify-center min-h-screen bg-cover bg-center background--image"
+  >
+    <div class="px-10 py-6 mt-4 text-left bg-white rounded-lg">
+      <div class="flex justify-center mb-9">
+        <img
+          src="@/assets/img/cintelink-logo-big.png"
+          class="max-w-sm h-auto w-auto"
+          alt=""
+        />
+      </div>
+
+      <form action="">
+        <div class="mt-4">
+          <input
+            type="text"
+            placeholder="Usuario"
+            class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+          />
+          <span class="text-xs tracking-wide text-red-600"
+            >Email field is required
+          </span>
+
+          <div class="mt-4">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+            />
+          </div>
+          <div class="flex items-baseline justify-center">
+            <button
+              class="px-6 py-2 mt-9 text-white bg-blue-400 rounded-full hover:bg-blue-500 inline-flex items-center"
+            >
+              <svg
+                class="w-4 h-4 mr-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path
+                  d="M400 256H152V152.9c0-39.6 31.7-72.5 71.3-72.9 40-.4 72.7 32.1 72.7 72v16c0 13.3 10.7 24 24 24h32c13.3 0 24-10.7 24-24v-16C376 68 307.5-.3 223.5 0 139.5.3 72 69.5 72 153.5V256H48c-26.5 0-48 21.5-48 48v160c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zM264 408c0 22.1-17.9 40-40 40s-40-17.9-40-40v-48c0-22.1 17.9-40 40-40s40 17.9 40 40v48z"
+                />
+              </svg>
+              <span class="uppercase font-bold">Login</span>
+            </button>
+          </div>
+          <div class="flex items-baseline justify-center mt-4">
+            <a href="#" class="text-sm text-blue-600 hover:underline"
+              >¿Olvidaste tu contraseña?</a
+            >
+          </div>
+
+          <div class="flex items-baseline justify-center mt-2 mb-6">
+            <a href="#" class="text-sm text-black hover:underline"
+              >Crear cuenta</a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: "Login",
+  computed: {},
+  components: {},
+  data() {
+    return {
+      formLogin: {
+        // ,modelo  de formulario de login
+        email: "",
+        password: "",
+        rememberMe: false,
+      },
+    };
+  },
+  methods: {},
+};
+</script>
