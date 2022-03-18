@@ -2,7 +2,7 @@
   <div
     class="flex items-center justify-center min-h-screen bg-cover bg-center background--image"
   >
-    <div class="px-10 py-6 mt-4 text-left bg-white rounded-lg">
+    <div class="px-8 py-6 mt-4 text-left bg-white rounded-lg flex-0">
       <div class="flex justify-center mb-9">
         <img
           src="@/assets/img/cintelink-logo-big.png"
@@ -13,36 +13,55 @@
 
       <form action="">
         <div class="mt-4">
-          <input
-            type="text"
-            placeholder="Usuario"
-            class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-          />
-          <span class="text-xs tracking-wide text-red-600"
-            >Email field is required
-          </span>
-
-          <div class="mt-4">
+          <div
+            class="mt-4 flex w-full items-center rounded bg-gray-200 px-4 placeholder-gray-400 outline-none"
+            :class="[errors.onUsername ? 'ring-1 ring-red-600' : '']"
+          >
             <input
-              type="password"
-              placeholder="Contraseña"
-              class="w-full px-4 py-2 mt-2 border rounded-md bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              v-model="formLogin.username"
+              type="text"
+              placeholder="Usuario"
+              class="fos:outline-none my-2 w-full border-none bg-transparent outline-none"
+            />
+            <font-awesome-icon
+              icon="circle-exclamation"
+              class="text-red-600"
+              :class="[errors.onUsername ? '' : 'invisible']"
             />
           </div>
+          <span class="text-xs text-red-600" v-if="errors.onUsername"
+            ><small
+              >El nombre de usuario debe tener entre 3 y 20 caracteres</small
+            >
+          </span>
+
+          <div
+            class="mt-4 flex w-full items-center rounded bg-gray-200 px-4 placeholder-gray-400 outline-none"
+            :class="[errors.onLogin ? 'ring-1 ring-red-600' : '']"
+          >
+            <input
+              v-model="formLogin.password"
+              type="password"
+              placeholder="Password"
+              class="fos:outline-none my-2 w-full border-none bg-transparent outline-none"
+            />
+            <font-awesome-icon
+              :class="[errors.onLogin ? '' : 'invisible']"
+              icon="circle-exclamation"
+              class="text-red-600"
+            />
+          </div>
+          <span class="text-xs text-red-600" v-if="errors.onLogin"
+            ><small>Nombre de usuario o contraseña incorrectos</small>
+          </span>
+
           <div class="flex items-baseline justify-center">
             <button
+              type="button"
+              @click="checkLogin"
               class="px-6 py-2 mt-9 text-white bg-blue-400 rounded-full hover:bg-blue-500 inline-flex items-center"
             >
-              <svg
-                class="w-4 h-4 mr-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                <path
-                  d="M400 256H152V152.9c0-39.6 31.7-72.5 71.3-72.9 40-.4 72.7 32.1 72.7 72v16c0 13.3 10.7 24 24 24h32c13.3 0 24-10.7 24-24v-16C376 68 307.5-.3 223.5 0 139.5.3 72 69.5 72 153.5V256H48c-26.5 0-48 21.5-48 48v160c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zM264 408c0 22.1-17.9 40-40 40s-40-17.9-40-40v-48c0-22.1 17.9-40 40-40s40 17.9 40 40v48z"
-                />
-              </svg>
+              <font-awesome-icon icon="unlock-alt" class="text-white pr-3" />
               <span class="uppercase font-bold">Login</span>
             </button>
           </div>
@@ -63,6 +82,8 @@
   </div>
 </template>
 <script>
+import { getLogin } from "../Api/";
+import { checkToken, saveToken } from "../utils/localStorageToken";
 export default {
   name: "Login",
   computed: {},
@@ -71,12 +92,48 @@ export default {
     return {
       formLogin: {
         // ,modelo  de formulario de login
-        email: "",
-        password: "",
-        rememberMe: false,
+        username: "",
+        password: "asd11qwf",
       },
+      errors: {
+        onLogin: false,
+        onUsername: false,
+      },
+      isLogin: false,
     };
   },
-  methods: {},
+  methods: {
+    async checkLogin() {
+      let login = await getLogin(this.formLogin);
+      let response = login.data;
+      if (response.error == 0) {
+        // si es 0
+        let { data } = response;
+        let token = saveToken(data[0]);
+        this.isLogin = token.login;
+        this.$router.push({ path: "home" });
+      } else {
+        alert("datos incorrectos");
+        // dispara los errores en el form
+        this.errors.onLogin = true;
+      }
+    },
+  },
+  watch: {
+    // cada vez que la pregunta cambie, esta función será ejecutada
+    "formLogin.username": function (newitem) {
+      newitem.valueOf().length > 3
+        ? (this.errors.onUsername = false)
+        : (this.errors.onUsername = true);
+    },
+  },
+  created: function () {
+    let token = checkToken();
+    if (token.login) {
+      this.$router.push({ path: "home" });
+    } else {
+      this.isLogin = false;
+    }
+  },
 };
 </script>

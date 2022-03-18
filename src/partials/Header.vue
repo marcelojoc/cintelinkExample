@@ -13,7 +13,7 @@
           <div class="items__controls">
             <button
               class="ring-4 ring-blue-200 ring-opacity-3 bg-blue-300 text-white font-bold hover:bg-blue-500 rounded-full py-2 px-6"
-              @click.prevent="getLogout"
+              @click="getLogout"
             >
               Logout
             </button>
@@ -25,20 +25,18 @@
 </template>
 
 <script>
+import { deleteToken } from "../utils/localStorageToken";
 export default {
   name: "Header",
   data() {
-    return {
-      isAuthenticated: true,
-    };
+    return {};
   },
   methods: {
-    getLogin() {
-      alert("hola logout");
-    },
-
     getLogout: () => {
-      alert("hola logout");
+      alert("salir de sistema");
+      debugger;
+      deleteToken();
+      this.$router.push({ path: "login" });
     },
   },
   computed: {},
