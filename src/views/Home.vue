@@ -4,7 +4,7 @@
       <h1
         class="rounded-lg text-6xl text-white text-center bg-blue-400 mx-5 uppercase mx-5 p-10"
       >
-        ok login
+        login ok
       </h1>
     </div>
   </home-layout>

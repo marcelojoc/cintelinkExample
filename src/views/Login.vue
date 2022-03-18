@@ -104,24 +104,28 @@ export default {
   },
   methods: {
     async checkLogin() {
-      let login = await getLogin(this.formLogin);
-      let response = login.data;
-      if (response.error == 0) {
-        // si es 0
-        let { data } = response;
-        let token = saveToken(data[0]);
-        this.isLogin = token.login;
-        this.$router.push({ path: "home" });
+      if (this.formLogin.password.valueOf().length >= 8) {
+        let login = await getLogin(this.formLogin);
+        let response = login.data;
+        if (response.error == 0) {
+          // si es 0
+          let { data } = response;
+          let token = saveToken(data[0]);
+          this.isLogin = token.login;
+          this.$router.push({ path: "home" });
+        } else {
+          // dispara los errores en el form
+          this.errors.onLogin = true;
+        }
       } else {
-        // dispara los errores en el form
-        this.errors.onLogin = true;
+        alert("La contraseña debe tener mas de 8 caracteres");
       }
     },
   },
   watch: {
     // cada vez que la pregunta cambie, esta función será ejecutada
     "formLogin.username": function (newitem) {
-      newitem.valueOf().length > 3
+      newitem.valueOf().length > 3 && newitem.valueOf().length <= 20
         ? (this.errors.onUsername = false)
         : (this.errors.onUsername = true);
     },
