@@ -93,7 +93,7 @@ export default {
       formLogin: {
         // ,modelo  de formulario de login
         username: "",
-        password: "asd11qwf",
+        password: "",
       },
       errors: {
         onLogin: false,
