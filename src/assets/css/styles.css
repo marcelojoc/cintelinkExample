@@ -1,8 +1,12 @@
-.button--login{
-
-    background-color: greenyellow !important; 
-}
 
 .background--image{
     background-image: url("../img/FONDO1.jpg");
+}
+
+@media (max-width: 600px) { 
+
+    .background--image{
+        background-color: rgb(255, 255, 255);
+        background-image: url("");
+    } 
 }

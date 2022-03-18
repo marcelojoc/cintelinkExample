@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <router-view />
   </div>
 </template>
 
-<style lang="css" type="text/css" src="./assets/css/tailwind.min.css"></style>
-<style lang="css" type="text/css" src="./assets/css/styles.css"></style>
+<style lang="css" type="css" src="./assets/css/tailwind.min.css"></style>
+<style lang="css" type="css" src="./assets/css/styles.css"></style>

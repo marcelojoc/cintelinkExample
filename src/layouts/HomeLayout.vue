@@ -1,6 +1,6 @@
 <template>
   <div class="page-layout">
-    <Header></Header>
+    <Header @logout="logoutSis"></Header>
     <main class="main">
       <slot></slot>
     </main>
@@ -11,6 +11,7 @@
 <script>
 import Header from "@/partials/Header";
 import FooterPartial from "@/partials/Footer";
+import { deleteToken } from "../utils/localStorageToken";
 
 export default {
   name: "HomeLayout",
@@ -18,6 +19,11 @@ export default {
     Header,
     FooterPartial,
   },
-  methods: {},
+  methods: {
+    logoutSis: function () {
+      deleteToken();
+      this.$router.push({ path: "login" });
+    },
+  },
 };
 </script>

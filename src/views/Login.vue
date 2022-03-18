@@ -2,7 +2,7 @@
   <div
     class="flex items-center justify-center min-h-screen bg-cover bg-center background--image"
   >
-    <div class="px-8 py-6 mt-4 text-left bg-white rounded-lg flex-0">
+    <div class="px-8 py-6 mt-4 text-left bg-white sm:rounded-lg flex-0">
       <div class="flex justify-center mb-9">
         <img
           src="@/assets/img/cintelink-logo-big.png"
@@ -113,7 +113,6 @@ export default {
         this.isLogin = token.login;
         this.$router.push({ path: "home" });
       } else {
-        alert("datos incorrectos");
         // dispara los errores en el form
         this.errors.onLogin = true;
       }

@@ -25,18 +25,15 @@
 </template>
 
 <script>
-import { deleteToken } from "../utils/localStorageToken";
 export default {
   name: "Header",
   data() {
     return {};
   },
   methods: {
-    getLogout: () => {
-      alert("salir de sistema");
-      debugger;
-      deleteToken();
-      this.$router.push({ path: "login" });
+    getLogout: function () {
+      alert("Usted va a salir del sistema");
+      this.$emit("logout");
     },
   },
   computed: {},

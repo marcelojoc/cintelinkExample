@@ -1,5 +1,5 @@
 const conf = {
   url: "login.mod.php",
-  test: "testttt",
+  test: "",
 };
 export { conf };
